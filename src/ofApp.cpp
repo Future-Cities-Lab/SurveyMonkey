@@ -2,6 +2,11 @@
 #include "ofxSpout.h"
 #include "ofxUDPManager.h"
 //--------------------------------------------------------------
+
+ofxUDPManager udpConnectionBroadcast;
+ofxUDPManager moduleConnections[28];
+char pixelsToSend[28][864];
+
 void ofApp::setup()
 {
     ofSetFrameRate(120);
@@ -19,18 +24,16 @@ void ofApp::setup()
     auto ret = udpConnectionBroadcast.Receive(udpMessage, 1000);
     while (udpMessage[0] != '\0') {
         int num = ((int)udpMessage[0]) - 101;
-        if (num < 7) {
-            ofxUDPManager udpConnectionRx;
-            moduleConnectionsZone2[((int)udpMessage[0]) - 101] = udpConnectionRx;
-            moduleConnectionsZone2[((int)udpMessage[0]) - 101].Create();
-            moduleConnectionsZone2[((int)udpMessage[0]) - 101].SetNonBlocking(true);
-            moduleConnectionsZone2[((int)udpMessage[0]) - 101].Bind(6000);
-            string ip = "192.168.2." + ofToString((int)udpMessage[0]);
-            moduleConnectionsZone2[((int)udpMessage[0]) - 101].Connect(ip.c_str(), 8888);
-            moduleConnectionsZone2[((int)udpMessage[0]) - 101].SetEnableBroadcast(false);
-            std::fill_n(udpMessage, 1000, 0);
-            auto ret = udpConnectionBroadcast.Receive(udpMessage, 1000);
-        } 
+        ofxUDPManager udpConnectionRx;
+        moduleConnectionsZone2[((int)udpMessage[0]) - 101] = udpConnectionRx;
+        moduleConnectionsZone2[((int)udpMessage[0]) - 101].Create();
+        moduleConnectionsZone2[((int)udpMessage[0]) - 101].SetNonBlocking(true);
+        moduleConnectionsZone2[((int)udpMessage[0]) - 101].Bind(6000);
+        string ip = "192.168.2." + ofToString((int)udpMessage[0]);
+        moduleConnectionsZone2[((int)udpMessage[0]) - 101].Connect(ip.c_str(), 8888);
+        moduleConnectionsZone2[((int)udpMessage[0]) - 101].SetEnableBroadcast(false);
+        std::fill_n(udpMessage, 1000, 0);
+        auto ret = udpConnectionBroadcast.Receive(udpMessage, 1000);
         cout << "" << endl;
     }
     ofSleepMillis(1000);
