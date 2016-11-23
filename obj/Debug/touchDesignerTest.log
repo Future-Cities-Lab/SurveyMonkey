@@ -1,9 +1,0 @@
-﻿     Creating library bin\touchDesignerTest_debug.lib and object bin\touchDesignerTest_debug.exp
-ofxSpout.obj : error LNK2019: unresolved external symbol _InitSender referenced in function "public: static void __cdecl ofxSpout::initSender(void)" (?initSender@ofxSpout@@SAXXZ)
-ofxSpout.obj : error LNK2019: unresolved external symbol _InitReceiver referenced in function "public: static void __cdecl ofxSpout::initReceiver(class ofTexture &)" (?initReceiver@ofxSpout@@SAXAAVofTexture@@@Z)
-ofxSpout.obj : error LNK2019: unresolved external symbol _ReleaseSender referenced in function "public: static void __cdecl ofxSpout::exit(void)" (?exit@ofxSpout@@SAXXZ)
-ofxSpout.obj : error LNK2019: unresolved external symbol _ReleaseReceiver referenced in function "public: static void __cdecl ofxSpout::exit(void)" (?exit@ofxSpout@@SAXXZ)
-ofxSpout.obj : error LNK2019: unresolved external symbol _CloseSpout referenced in function "public: static void __cdecl ofxSpout::exit(void)" (?exit@ofxSpout@@SAXXZ)
-ofxSpout.obj : error LNK2019: unresolved external symbol _SendTexture referenced in function "public: static void __cdecl ofxSpout::sendTexture(void)" (?sendTexture@ofxSpout@@SAXXZ)
-ofxSpout.obj : error LNK2019: unresolved external symbol _ReceiveTexture referenced in function "public: static void __cdecl ofxSpout::receiveTexture(class ofTexture &)" (?receiveTexture@ofxSpout@@SAXAAVofTexture@@@Z)
-bin\touchDesignerTest_debug.exe : fatal error LNK1120: 7 unresolved externals
